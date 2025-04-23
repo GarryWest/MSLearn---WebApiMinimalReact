@@ -1,6 +1,10 @@
 # Create web apps and services with ASP.NET Core, minimal API, and .NET
 
-This came from here: https://learn.microsoft.com/en-us/training/modules/build-web-api-minimal-spa/
+## This came from here: https://learn.microsoft.com/en-us/training/modules/build-web-api-minimal-spa/
+
+## Open up /PizzaClient in an integrated server and do this to run the mock server based on db.json:
+vscode ➜ /workspaces/WebApiMinimalReact/PizzaClient (main) $ npx json-server --watch --port 5100 db.json
+
 
 .NET is a free, cross-platform, open-source developer platform for building many different types of applications. With minimal API, you can create an API in just four lines of code, while using the latest features of .NET.
 

@@ -1,0 +1,19 @@
+{
+  "pizzas": [
+    {
+      "id": "1",
+      "name": "Margherita",
+      "description": "Classic pizza with tomato sauce, mozzarella cheese, and fresh basil."
+    },
+    {
+      "id": "2",
+      "name": "Pepperoni",
+      "description": "Spicy pepperoni slices with mozzarella cheese and tomato sauce."
+    },
+    {
+      "id": "3",
+      "name": "Vegetarian",
+      "description": "A mix of fresh vegetables with mozzarella cheese and tomato sauce."
+    }
+  ]
+}
