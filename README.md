@@ -3,10 +3,22 @@
 ## This came from here: https://learn.microsoft.com/en-us/training/modules/build-web-api-minimal-spa/
 
 ## Open up /PizzaClient in an integrated server and do this to run the mock server based on db.json:
+
 vscode ➜ /workspaces/WebApiMinimalReact/PizzaClient (main) $ npx json-server --watch --port 5100 db.json
 
+## do this to run the client /PizzaClient :
 
-.NET is a free, cross-platform, open-source developer platform for building many different types of applications. With minimal API, you can create an API in just four lines of code, while using the latest features of .NET.
+npm run dev
+
+## migrate/create pizzas.db, run the real server /PizzaStore:
+
+dotnet ef database update
+-- If the dotnet ef can't be found, install it with dotnet tool install -g dotnet-ef then repeat the previous command.
+
+dotnet dev-certs https
+dotnet run
+
+## .NET is a free, cross-platform, open-source developer platform for building many different types of applications. With minimal API, you can create an API in just four lines of code, while using the latest features of .NET.
 
 ## Use repo with training module
 
@@ -20,7 +32,7 @@ This repository supports the [Create a full stack application by using React and
 
 ## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 
