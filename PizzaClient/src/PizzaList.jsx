@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { TextField, Button, Box, List, ListItem, ListItemText, listItemSecondaryActionClasses, IconButton } from "@mui/material";
+import { Delete, Edit } from "@mui/icons-material";
 
 function PizzaList({ name, data, onCreate, onUpdate, onDelete, error }) {
   const [formData, setFormData] = useState({
@@ -50,47 +52,34 @@ function PizzaList({ name, data, onCreate, onUpdate, onDelete, error }) {
   };
 
   return (
-    <div>
-      <h2>New {name}</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleFormChange}
-          placeholder="Name"
-        />
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleFormChange}
-          placeholder="Description"
-        />
-        <button type="submit">{editingId ? "Update" : "Create"}</button>
-        {editingId && (
-          <button type="button" onClick={handleCancelEdit}>
-            Cancel
-          </button>
-        )}
+    <Box className="Box" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <h2>{name}</h2>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 8}}>
+        <TextField label="Name" name="name" value={formData.name} onChange={handleFormChange} />
+        <TextField label="Description" name="description" value={formData.description} onChange={handleFormChange} />
+        <Button sx={{ mr: 1 }} variant="contained" type="submit">{editingId === null ? 'Create' : 'Update'}</Button>
+        {editingId !== null && <Button variant="contained" color="secondary" onClick={handleCancel}>Cancel</Button>}
       </form>
-      {error && <p style={{ color: "red" }}>{error.message}</p>}
-      <h2>{name}s</h2>
-      <ul>
-        {data.map((item) => (
-          <li key={item.id}>
-            <div>
-              <strong>{item.name}</strong>: {item.description}
-            </div>
-            <div>
-              <button onClick={() => handleEdit(item)}>Edit</button>
-            </div>
-            <button onClick={() => onDelete(item.id)}>Delete</button>
-          </li>
+      <List sx={{ width: '100%', maxWidth: 360 }}>
+        {data.map(item => (
+          <ListItem key={item.id} secondaryAction={
+            <>
+              <IconButton edge="end" aria-label="edit" onClick={() => handleEdit(item.id)}>
+                <Edit />
+              </IconButton>
+              <IconButton edge="end" aria-label="delete" onClick={() => onDelete(item.id)}>
+                <Delete />
+              </IconButton>
+            </>
+          }>
+            <ListItemText primary={item.name} secondary={item.description} />
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+      {error && <p>{error}</p>}
+    </Box>
   );
+
 }
 
 export default PizzaList;
